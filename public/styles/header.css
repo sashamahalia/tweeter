@@ -9,8 +9,13 @@ header {
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
-.profile-name {
+div.profile-name h2 {
   color: #FFFFFF;
   font-weight: 300;
+  margin-top: -0.5em;
+}
+
+.profile-name h2 span {
+  font-weight: 700;
 }
 
