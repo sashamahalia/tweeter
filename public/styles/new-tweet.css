@@ -49,6 +49,10 @@ button[type=submit] {
   font-weight: 700;
 }
 
+.exceeded {
+  color: red;
+}
+
 main section h2 {
   display: none;
 }
