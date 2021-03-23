@@ -22,7 +22,7 @@ label[for=tweet-text] {
   font-weight: 700;
 }
 
-textarea {
+#tweet-text {
   background: transparent;
   resize: none;
   outline: none;
