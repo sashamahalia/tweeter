@@ -1,0 +1,55 @@
+.tweet-container {
+  width: 100%;
+}
+
+section article {
+  display: flex;
+  flex-direction: column;
+  padding-left: 1em;
+  padding-right: 1em;
+  border: 3px solid black;
+  margin-bottom: 1em;
+}
+
+section article:hover {
+  box-shadow: 0.5em 0.5em gray;
+}
+
+section article:hover > header > h5 {
+  visibility: visible;
+}
+
+.identifier {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.identifier ~ h5 {
+  visibility: hidden;
+}
+
+img ~ h4 {
+  margin-left: 0.5em;
+}
+
+section article header, section article footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 300;
+}
+
+header ~ p {
+  padding-bottom: 2em;
+  border-bottom: 3px solid black;
+}
+
+footer p, .icons {
+  margin-top: 0;
+  font-size: 0.7em;
+}
+
+
+
+
