@@ -10,6 +10,9 @@
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/a88a03717f.js" crossorigin="anonymous"></script>
 
+    <!-- Moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
@@ -57,7 +60,7 @@
             <label for="tweet-text">What are you humming about?</label>
             <textarea name="text" id="tweet-text"></textarea>
             <div class="container">
-              <button type="submit">Tweet</button>
+              <button id="submit" type="submit">Tweet</button>
               <output name="counter" class="counter" for="tweet-text">140</output>
             </div>
           </form>
