@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-section article {
+.single-tweet {
   display: flex;
   flex-direction: column;
   padding-left: 1em;
@@ -11,28 +11,28 @@ section article {
   margin-bottom: 1em;
 }
 
-section article:hover {
+.single-tweet:hover {
   box-shadow: 0.5em 0.5em gray;
 }
 
-section article:hover > header > h5 {
+.single-tweet:hover > header > h5 {
   visibility: visible;
 }
 
-.identifier {
+.single-tweet header div  {
   display: flex;
   justify-content: flex-start;
 }
 
-.identifier ~ h5 {
+.single-tweet header div ~ h5 {
   visibility: hidden;
 }
 
-img ~ h4 {
-  margin-left: 0.5em;
+.single-tweet img ~ h4 {
+  margin-left: 0.7em;
 }
 
-section article header, section article footer {
+.single-tweet header, .single-tweet footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
