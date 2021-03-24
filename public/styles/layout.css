@@ -47,6 +47,9 @@ h4, h5, h6 {
   font-weight: 300;
 }
 
+/*
+moves content below the navbar
+ */
 .offset {
   margin-top: 120px;
   width: 100%;
