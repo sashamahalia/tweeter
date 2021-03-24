@@ -38,49 +38,51 @@
       <span class="tweet-link"><b>Write</b> a new tweet</span>
     </nav>
 
-    <header class="header">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div class="profile-name">
-          <h2><span>Sasha</span> Mahalia</h2>
-      </div>
-    </header>
+    <div class="offset">
+      <header class="header">
+        <div>
+            <img src="/images/profile-hex.png"> 
+        </div>
+        <br>
+        <div class="profile-name">
+            <h2><span>Sasha</span> Mahalia</h2>
+        </div>
+      </header>
 
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <h2>Compose Tweet</h2>
-        <form method="POST" action="/tweets/"> 
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="container">
-            <button type="submit">Tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section class="tweet-container">
-        <article class="single-tweet">
-          <header>
-            <div>
-              <img src="/images/lilface.png" alt="small badly drawn face">
-              <h4>Rhea Jacobs</h4>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <h2>Compose Tweet</h2>
+          <form method="POST" action="/tweets/"> 
+            <label for="tweet-text">What are you humming about?</label>
+            <textarea name="text" id="tweet-text"></textarea>
+            <div class="container">
+              <button type="submit">Tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
             </div>
-            <h5>@MrsJacobs</h5>
-          </header>
-          <p>Hello World!</p>
-          <footer>
-            <p>10 days ago</p>
-            <div class="icons">
-              <i class="fas fa-flag"></i>
-              <i class="fas fa-retweet"></i>
-              <i class="fas fa-heart"></i>
-            </div>
-          </footer>
-        </article>
-      </section>
-    </main>
+          </form>
+        </section>
+        <section class="tweet-container">
+          <article class="single-tweet">
+            <header>
+              <div>
+                <img src="/images/lilface.png" alt="small badly drawn face">
+                <h4>Rhea Jacobs</h4>
+              </div>
+              <h5>@MrsJacobs</h5>
+            </header>
+            <p>Hello World!</p>
+            <footer>
+              <p>10 days ago</p>
+              <div class="icons">
+                <i class="fas fa-flag"></i>
+                <i class="fas fa-retweet"></i>
+                <i class="fas fa-heart"></i>
+              </div>
+            </footer>
+          </article>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
