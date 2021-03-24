@@ -23,12 +23,14 @@ const data = [
   }
 ];
 
+//renders all tweets to tweet-container given an array of tweet objects
 const renderTweets = function(tweets) {
   for (const tweet of tweets) {
     $('#tweets-container').append(createTweetElement(tweet));
   }
 };
 
+//Creates an html template with variables from tweet data
 const createTweetElement = function(data) {
   const { user, content, created_at } = data;
   let $tweet =
@@ -53,21 +55,35 @@ const createTweetElement = function(data) {
   return $tweet;
 };
 
+const validator = function(length) {
+  if (140 - length < 0) {
+    return alert('Cannot send tweet, character length exceeded.');
+  }
+  if (!length) {
+    return alert ('No input, add text to send tweet');
+  }
+  return true;
+}
 
 
 $(document).ready(function() {
 
   renderTweets(data);
+
+  //Overrides defult form behavior, submits data to server if it passes validation
   $('form').submit(function(event) {
+    const textLength = $('#tweet-text').val().length
     event.preventDefault();
-    console.log('event', event);
-    $.post('/tweets', $(this).serialize())
-    .then((result) => {
-      console.log('data:', $(this).serialize());
-    }).catch(err => {
-      console.log('ajax error caught');
-      console.log(err);
-    });
+    // validator(textLength)
+    if (validator(textLength)) {
+      $.post('/tweets', $(this).serialize())
+      .then((result) => {
+        console.log('length:', textLength);
+      })
+      .catch(err => {
+        console.log('ajax error caught');
+        console.log(err);
+      });
+    }
   })
- 
 });
