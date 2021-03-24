@@ -23,25 +23,26 @@ const data = [
   }
 ];
 
-const rendTweets = function(tweets) {
-  for (const tweet in tweets) {
-    $('#tweets-container').append(createTweetElement(tweets[tweet]));
+const renderTweets = function(tweets) {
+  for (const tweet of tweets) {
+    $('#tweets-container').append(createTweetElement(tweet));
   }
 };
 
 const createTweetElement = function(data) {
+  const { user, content, created_at } = data;
   let $tweet =
   `<article class="single-tweet">
     <header>
       <div>
-        <img src="${data.user.avatars}" alt="avatar image">
-        <h4>${data.user.name}</h4>
+        <img src="${user.avatars}" alt="avatar image">
+        <h4>${user.name}</h4>
       </div>
-      <h5>${data.user.handle}</h5>
+      <h5>${user.handle}</h5>
     </header>
-    <p>${data.content.text}</p>
+    <p>${content.text}</p>
     <footer>
-      <p>${data.created_at}</p>
+      <p>${moment(created_at).fromNow()}</p>
       <div class="icons">
         <i class="fas fa-flag"></i>
         <i class="fas fa-retweet"></i>
@@ -52,8 +53,21 @@ const createTweetElement = function(data) {
   return $tweet;
 };
 
+
+
 $(document).ready(function() {
 
-  rendTweets(data);
-
+  renderTweets(data);
+  $('form').submit(function(event) {
+    event.preventDefault();
+    console.log('event', event);
+    $.post('/tweets', $(this).serialize())
+    .then((result) => {
+      console.log('data:', $(this).serialize());
+    }).catch(err => {
+      console.log('ajax error caught');
+      console.log(err);
+    });
+  })
+ 
 });
