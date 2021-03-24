@@ -1,16 +1,3 @@
-const tweetData = {
-  "user": {
-    "name": "Newton",
-    "avatars": "https://i.imgur.com/73hZDYK.png",
-      "handle": "@SirIsaac"
-    },
-  "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-  "created_at": 1461116232227
-}
-
-
 const data = [
   {
     "user": {
@@ -34,11 +21,16 @@ const data = [
     },
     "created_at": 1461113959088
   }
-]
+];
 
+const rendTweets = function(tweets) {
+  for (const tweet in tweets) {
+    $('#tweets-container').append(createTweetElement(tweets[tweet]));
+  }
+};
 
 const createTweetElement = function(data) {
-  let $tweet = 
+  let $tweet =
   `<article class="single-tweet">
     <header>
       <div>
@@ -56,25 +48,12 @@ const createTweetElement = function(data) {
         <i class="fas fa-heart"></i>
       </div>
     </footer>
-  </article>`
+  </article>`;
   return $tweet;
-}
-
-// const rendTweets = function(tweets) {
-//   for (const tweet in tweets) {
-//     $('#tweets-container').append(createTweetElement(tweet));
-//   }
-// }
-
-
-const $tweet = createTweetElement(tweetData);
+};
 
 $(document).ready(function() {
 
-  $('#tweets-container').append($tweet);
+  rendTweets(data);
 
 });
-
-
-// Test / driver code (temporary)
-console.log($tweet); // to see what it looks like // to add it to the page so we can make sure it's got all the right elements, classes, etc.
