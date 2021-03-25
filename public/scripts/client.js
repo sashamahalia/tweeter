@@ -28,34 +28,6 @@ const renderTweets = function(tweets) {
   }
 };
 
-// //Creates an html template with variables from tweet data
-// const createTweetElement = function(data) {
-//   const { user, content, created_at } = data;
-//   let $tweet =
-//   `<article class="single-tweet">
-//     <header>
-//       <div>
-//         <img src="${user.avatars}" alt="avatar image">
-//         $("<h4>").text(user.name);
-//         <h4>${user.name}</h4>
-//       </div>
-//       $("<h5>").text(user.handle);
-//       <h5>${user.handle}</h5>
-//     </header>
-//     $("<p>").text(content.text);
-//     <p>${content.text}</p>
-//     <footer>
-//       <p>${moment(created_at).fromNow()}</p>
-//       <div class="icons">
-//         <i class="fas fa-flag"></i>
-//         <i class="fas fa-retweet"></i>
-//         <i class="fas fa-heart"></i>
-//       </div>
-//     </footer>
-//   </article>`;
-//   return $tweet;
-// };
-
 //Creates an html template with variables from tweet data
 const createTweetElement = function(data) {
   const { user, content, created_at } = data;
@@ -84,10 +56,14 @@ const createTweetElement = function(data) {
 
 const validator = function(length) {
   if (140 - length < 0) {
-    return alert('Cannot send tweet, character length exceeded.');
+    $('.new-tweet').append('<h3 class="error-message">Invalid input: text character length exceeded.</h3>');
+    // return alert('Cannot send tweet, character length exceeded.');
   }
   if (!length) {
-    return alert('No input, add text to send tweet');
+    $('.new-tweet').append('<h3 class="error-message">Invalid input: tweet must have text</h3>');
+  }
+  if (length && 140 - length >= 0) {
+    $('.error-message').remove();
   }
   return true;
 };
