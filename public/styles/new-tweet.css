@@ -63,7 +63,8 @@ main section h2 {
 
 .too-long, .empty {
   margin-top: 0.5em;
-  background-color: lightgoldenrodyellow;
+  border: 3px solid red;
+  color: red;
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -72,5 +73,9 @@ main section h2 {
 .too-long > i, .empty > i {
   margin-left: 1em;
   margin-right: 1em;
+}
+
+.too-long > h3, .empty > h3 {
+  color: red;
 }
 
