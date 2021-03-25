@@ -61,7 +61,12 @@ main section h2 {
   display: none;
 }
 
+.error {
+  visibility: hidden;
+}
+
 .error-red {
+  visibility: visible;
   margin-top: 0.5em;
   margin-bottom: 1em;
   border: 3px solid red;

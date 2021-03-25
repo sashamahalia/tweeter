@@ -66,13 +66,22 @@ const validator = function(length) {
     slideDown();
     return false;
   }
+  if (140 - length >= 0 && length) {
+    slideUp();
+  }
   return true;
 };
 
 //triggers jquery slidedown effect, and adds a class to the error message to trigger visability
 const slideDown = () => {
-  return $(".error").slideDown('slow', () => {
+  return $(".error").slideDown('fast', () => {
     $('.error').addClass('error-red');
+  });
+}
+
+const slideUp = () => {
+  return $(".error").slideUp('fast', () => {
+    $('.error').removeClass('error-red');
   });
 }
 
