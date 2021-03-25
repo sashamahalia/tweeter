@@ -23,6 +23,19 @@ const data = [
   }
 ];
 
+const loadTweets = function() {
+    $.getJSON('/tweets')
+    .then((result) => {
+      console.log(result);
+    })
+    .catch(err => {
+      console.log('ajax error caught');
+      console.log(err);
+    });
+};
+
+loadTweets();
+
 //renders all tweets to tweet-container given an array of tweet objects
 const renderTweets = function(tweets) {
   for (const tweet of tweets) {
@@ -60,10 +73,10 @@ const validator = function(length) {
     return alert('Cannot send tweet, character length exceeded.');
   }
   if (!length) {
-    return alert ('No input, add text to send tweet');
+    return alert('No input, add text to send tweet');
   }
   return true;
-}
+};
 
 
 $(document).ready(function() {
@@ -72,18 +85,19 @@ $(document).ready(function() {
 
   //Overrides defult form behavior, submits data to server if it passes validation
   $('form').submit(function(event) {
-    const textLength = $('#tweet-text').val().length
     event.preventDefault();
-    // validator(textLength)
+    const textLength = $('#tweet-text').val().length; 
     if (validator(textLength)) {
-      $.post('/tweets', $(this).serialize())
+      const serialized = $(this).serialize()
+      console.log(serialized);
+      $.post('/tweets', serialized)
       .then((result) => {
-        console.log('length:', textLength);
+        loadTweets();
       })
       .catch(err => {
         console.log('ajax error caught');
         console.log(err);
       });
     }
-  })
+  });
 });
