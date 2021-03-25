@@ -45,6 +45,10 @@ button[type=submit] {
   color: #FFFFFF;
 }
 
+button[type=submit]:hover {
+  border: 2px solid lightblue
+}
+
 .counter {
   font-weight: 700;
 }
