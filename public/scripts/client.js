@@ -1,32 +1,33 @@
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": "https://i.imgur.com/73hZDYK.png"
-      ,
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": "https://i.imgur.com/nlhLi3I.png",
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  }
-];
+// const data = [
+//   {
+//     "user": {
+//       "name": "Newton",
+//       "avatars": "https://i.imgur.com/73hZDYK.png"
+//       ,
+//       "handle": "@SirIsaac"
+//     },
+//     "content": {
+//       "text": "If I have seen further it is by standing on the shoulders of giants"
+//     },
+//     "created_at": 1461116232227
+//   },
+//   {
+//     "user": {
+//       "name": "Descartes",
+//       "avatars": "https://i.imgur.com/nlhLi3I.png",
+//       "handle": "@rd" },
+//     "content": {
+//       "text": "Je pense , donc je suis"
+//     },
+//     "created_at": 1461113959088
+//   }
+// ];
 
 const loadTweets = function() {
     $.getJSON('/tweets')
     .then((result) => {
-      console.log(result);
+      const sorted = result.sort((a, b) => b.created_at - a.created_at); //adapted from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
+      renderTweets(sorted);
     })
     .catch(err => {
       console.log('ajax error caught');
@@ -81,17 +82,15 @@ const validator = function(length) {
 
 $(document).ready(function() {
 
-  renderTweets(data);
-
   //Overrides defult form behavior, submits data to server if it passes validation
   $('form').submit(function(event) {
     event.preventDefault();
     const textLength = $('#tweet-text').val().length; 
     if (validator(textLength)) {
       const serialized = $(this).serialize()
-      console.log(serialized);
       $.post('/tweets', serialized)
       .then((result) => {
+        location.reload();
         loadTweets();
       })
       .catch(err => {
