@@ -6,6 +6,7 @@ const escape =  function(str) {
   return newElement.innerHTML;
 }
 
+//sorts tweets into an array organized by newest first, then calls the renderTweets function to push them to the dom.
 const loadTweets = function() {
     $.getJSON('/tweets')
     .then((result) => {
@@ -53,21 +54,27 @@ const createTweetElement = function(data) {
   return $tweet;
 };
 
-
 const validator = function(length) {
   if (140 - length < 0) {
-    $('.new-tweet').append('<h3 class="error-message">Invalid input: text character length exceeded.</h3>');
-    // return alert('Cannot send tweet, character length exceeded.');
+    //appends warning icon and error message to the new-tweet section, if conditions are met
+    $('.error').empty().append('<i class="fas fa-exclamation-triangle"></i><h3>Tweet must have 140 characters or less</h3>');
+    slideDown();
+    return false;
   }
   if (!length) {
-    $('.new-tweet').append('<h3 class="error-message">Invalid input: tweet must have text</h3>');
-  }
-  if (length && 140 - length >= 0) {
-    $('.error-message').remove();
+    $('.error').empty().append('<i class="fas fa-exclamation-triangle"></i><h3>Tweet must contain text</h3>');
+    slideDown();
+    return false;
   }
   return true;
 };
 
+//triggers jquery slidedown effect, and adds a class to the error message to trigger visability
+const slideDown = () => {
+  return $(".error").slideDown('slow', () => {
+    $('.error').addClass('error-red');
+  });
+}
 
 $(document).ready(function() {
 
