@@ -1,27 +1,10 @@
-// const data = [
-//   {
-//     "user": {
-//       "name": "Newton",
-//       "avatars": "https://i.imgur.com/73hZDYK.png"
-//       ,
-//       "handle": "@SirIsaac"
-//     },
-//     "content": {
-//       "text": "If I have seen further it is by standing on the shoulders of giants"
-//     },
-//     "created_at": 1461116232227
-//   },
-//   {
-//     "user": {
-//       "name": "Descartes",
-//       "avatars": "https://i.imgur.com/nlhLi3I.png",
-//       "handle": "@rd" },
-//     "content": {
-//       "text": "Je pense , donc je suis"
-//     },
-//     "created_at": 1461113959088
-//   }
-// ];
+
+// Returns a new the html of a created element to avoid XXS
+const escape =  function(str) {
+  let newElement = document.createElement('div');
+  newElement.appendChild(document.createTextNode(str));
+  return newElement.innerHTML;
+}
 
 const loadTweets = function() {
     $.getJSON('/tweets')
@@ -39,11 +22,39 @@ loadTweets();
 
 //renders all tweets to tweet-container given an array of tweet objects
 const renderTweets = function(tweets) {
-  $('#tweets-container').empty();
+   $('#tweets-container').empty();
   for (const tweet of tweets) {
     $('#tweets-container').append(createTweetElement(tweet));
   }
 };
+
+// //Creates an html template with variables from tweet data
+// const createTweetElement = function(data) {
+//   const { user, content, created_at } = data;
+//   let $tweet =
+//   `<article class="single-tweet">
+//     <header>
+//       <div>
+//         <img src="${user.avatars}" alt="avatar image">
+//         $("<h4>").text(user.name);
+//         <h4>${user.name}</h4>
+//       </div>
+//       $("<h5>").text(user.handle);
+//       <h5>${user.handle}</h5>
+//     </header>
+//     $("<p>").text(content.text);
+//     <p>${content.text}</p>
+//     <footer>
+//       <p>${moment(created_at).fromNow()}</p>
+//       <div class="icons">
+//         <i class="fas fa-flag"></i>
+//         <i class="fas fa-retweet"></i>
+//         <i class="fas fa-heart"></i>
+//       </div>
+//     </footer>
+//   </article>`;
+//   return $tweet;
+// };
 
 //Creates an html template with variables from tweet data
 const createTweetElement = function(data) {
@@ -53,11 +64,11 @@ const createTweetElement = function(data) {
     <header>
       <div>
         <img src="${user.avatars}" alt="avatar image">
-        <h4>${user.name}</h4>
+        <h4>${escape(user.name)}</h4>
       </div>
-      <h5>${user.handle}</h5>
+      <h5>${escape(user.handle)}</h5>
     </header>
-    <p>${content.text}</p>
+    <p>${escape(content.text)}</p>
     <footer>
       <p>${moment(created_at).fromNow()}</p>
       <div class="icons">
@@ -69,6 +80,7 @@ const createTweetElement = function(data) {
   </article>`;
   return $tweet;
 };
+
 
 const validator = function(length) {
   if (140 - length < 0) {
@@ -91,7 +103,7 @@ $(document).ready(function() {
       const serialized = $(this).serialize()
       $.post('/tweets', serialized)
       .then((result) => {
-        $('#tweet-text').val(''); // 
+        $('#tweet-text').val('');
         loadTweets();
       })
       .catch(err => {

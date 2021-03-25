@@ -42,7 +42,7 @@
   font-weight: 300;
 }
 
-header ~ p {
+.single-tweet header ~ p {
   padding-bottom: 2em;
   border-bottom: 3px solid black;
 }
