@@ -61,3 +61,16 @@ main section h2 {
   display: none;
 }
 
+.too-long, .empty {
+  margin-top: 0.5em;
+  background-color: lightgoldenrodyellow;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.too-long > i, .empty > i {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
