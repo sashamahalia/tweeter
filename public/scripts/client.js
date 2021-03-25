@@ -39,6 +39,7 @@ loadTweets();
 
 //renders all tweets to tweet-container given an array of tweet objects
 const renderTweets = function(tweets) {
+  $('#tweets-container').empty();
   for (const tweet of tweets) {
     $('#tweets-container').append(createTweetElement(tweet));
   }
@@ -90,7 +91,7 @@ $(document).ready(function() {
       const serialized = $(this).serialize()
       $.post('/tweets', serialized)
       .then((result) => {
-        location.reload();
+        $('#tweet-text').val(''); // 
         loadTweets();
       })
       .catch(err => {
