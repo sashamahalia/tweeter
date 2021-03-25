@@ -10,6 +10,20 @@ nav {
   top: 0;
 }
 
+nav div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav span {
+  margin-bottom: 0.5em;
+}
+
+nav div i {
+  color: red;
+}
+
 .logo {
   font-family: "Bungee", sans-serif;
   margin-left: 1.5em;
