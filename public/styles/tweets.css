@@ -21,6 +21,15 @@
   visibility: visible;
 }
 
+.icons {
+  visibility: hidden;
+}
+
+.single-tweet:hover > footer > .icons {
+  visibility: visible;
+}
+
+
 .single-tweet header div  {
   display: flex;
   justify-content: flex-start;

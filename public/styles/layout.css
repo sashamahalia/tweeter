@@ -22,6 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 320px;
 
 }
 
@@ -51,10 +52,75 @@ h4, h5, h6 {
 moves content below the navbar
  */
 .offset {
-  margin-top: 120px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+/* Tablets */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  head ~ body nav {
+    visibility: visible;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .tweet-link {
+    margin-right: 1.5em;
+  }
+
+  span.logo {
+    margin-top: 0;
+  }
+}
+
+/* Desktop and laptop styles */
+@media only screen and (min-width: 1024px) {
+  .offset {
+    width: 90%;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 120px;
+  }
+
+  header.header {
+    margin-top: 5rem;
+    align-self: flex-start;
+    margin-right: 8em;
+    width: 40%;
+    height: 50%;
+    margin-top: 5em;
+  }
+
+  main.container {
+    margin-top: 5em;
+
+  }
+
+  section {
+    margin-top: 0;
+  }
+
+  .new-tweet {
+    margin: 0;
+  }
+  body nav {
+    background-color: #4056a1;
+    position: fixed;
+    visibility: visible;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+  .tweet-link {
+    margin-right: 1.5em;
+  }
+
+  nav span.logo {
+    margin-top: 0;
+  }
+
 }
 
