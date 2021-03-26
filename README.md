@@ -19,3 +19,10 @@ This web app was built as a project for Lighthouse Labs Web Development Bootcamp
 - MD5
 - Nodemon
 - Node 5.10.x or above
+
+## Screenshots
+
+!["Desktop view of app"](https://github.com/sashamahalia/tweeter/blob/master/docs/desktop-view.png?raw=true)
+!["Mobile view of app"](https://github.com/sashamahalia/tweeter/blob/master/docs/mobile-view.png?raw=true)
+!["header"](https://github.com/sashamahalia/tweeter/blob/master/docs/header.png?raw=true)
+!["tweet on hover"](https://github.com/sashamahalia/tweeter/blob/master/docs/tweet-view.png?raw=true)
