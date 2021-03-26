@@ -25,16 +25,21 @@ nav span {
 nav div i {
   color: red;
   animation: MoveUpDown 1s linear infinite;
-  animation-name: arrow;
 }
-
-@keyframes arrow {
-  from {}
+/* Arrow animation adapted from LHL student Devin MacGillivray with permission  */
+@keyframes MoveUpDown {
+  0%,
+  50% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-0.1em);
+  }
 }
 
 .logo {
   font-family: "Bungee", sans-serif;
   margin-left: 1.5rem;
   font-size: 40px;
-  margin-top: 5%;
+  margin-top: 10%;
 }

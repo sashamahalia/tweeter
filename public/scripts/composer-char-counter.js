@@ -1,7 +1,7 @@
 //gets .counter html via dom traversal, then gives it the value of 140 minus the input length
-const count = function(event) {
+const count = function() {
   $(this).siblings('.container').children('.counter').html(140 - $(this).val().length);
-}
+};
 
 //adds class of exceeded to the counter if its char count is negative, removes the class if it's 0 or above.
 const exceeds = function() {
@@ -10,7 +10,7 @@ const exceeds = function() {
   } else if ((140 - $(this).val().length) >= 0) {
     $(this).siblings('.container').children('.counter').removeClass('exceeded');
   }
-}
+};
 
 
 $(document).ready(function() {

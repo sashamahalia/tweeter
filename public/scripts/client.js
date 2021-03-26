@@ -4,11 +4,11 @@ const escape =  function(str) {
   let newElement = document.createElement('div');
   newElement.appendChild(document.createTextNode(str));
   return newElement.innerHTML;
-}
+};
 
 //sorts tweets into an array organized by newest first, then calls the renderTweets function to push them to the dom.
 const loadTweets = function() {
-    $.getJSON('/tweets')
+  $.getJSON('/tweets')
     .then((result) => {
       const sorted = result.sort((a, b) => b.created_at - a.created_at); //adapted from https://flaviocopes.com/how-to-sort-array-of-objects-by-property-javascript/
       renderTweets(sorted);
@@ -19,11 +19,12 @@ const loadTweets = function() {
     });
 };
 
+//loads tweets before page is done loading.
 loadTweets();
 
 //renders all tweets to tweet-container given an array of tweet objects
 const renderTweets = function(tweets) {
-   $('#tweets-container').empty();
+  $('#tweets-container').empty();
   for (const tweet of tweets) {
     $('#tweets-container').append(createTweetElement(tweet));
   }
@@ -54,9 +55,9 @@ const createTweetElement = function(data) {
   return $tweet;
 };
 
+//appends warning icon and error message to the new-tweet section if conditions are met
 const validator = function(length) {
   if (140 - length < 0) {
-    //appends warning icon and error message to the new-tweet section, if conditions are met
     $('.error').empty().append('<i class="fas fa-exclamation-triangle"></i><h3>Tweet must have 140 characters or less</h3>');
     slideDown();
     return false;
@@ -77,31 +78,31 @@ const slideDown = () => {
   return $(".error").slideDown('fast', () => {
     $('.error').addClass('error-red');
   });
-}
-
+};
+//triggers slideup, and removes error styling class
 const slideUp = () => {
   return $(".error").slideUp('fast', () => {
     $('.error').removeClass('error-red');
   });
-}
+};
 
 $(document).ready(function() {
 
   //Overrides defult form behavior, submits data to server if it passes validation
   $('form').submit(function(event) {
     event.preventDefault();
-    const textLength = $('#tweet-text').val().length; 
+    const textLength = $('#tweet-text').val().length;
     if (validator(textLength)) {
-      const serialized = $(this).serialize()
+      const serialized = $(this).serialize();
       $.post('/tweets', serialized)
-      .then((result) => {
-        $('#tweet-text').val('');
-        loadTweets();
-      })
-      .catch(err => {
-        console.log('ajax error caught');
-        console.log(err);
-      });
+        .then(() => {
+          $('#tweet-text').val('');
+          loadTweets();
+        })
+        .catch(err => {
+          console.log('ajax error caught');
+          console.log(err);
+        });
     }
   });
 });
